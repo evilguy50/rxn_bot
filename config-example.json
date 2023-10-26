@@ -1,0 +1,18 @@
+{
+    "token": "discord token",
+    "id": "guild id",
+    "admin_roles": [],
+    "modules": {
+        "recruits": {
+            "online": "",
+            "new": "",
+            "welcome": "",
+            "levels": [
+                {
+                    "count": 5,
+                    "role": ""
+                }
+            ]
+        }
+    }
+}
