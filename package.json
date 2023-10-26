@@ -10,8 +10,7 @@
     "@": "build"
   },
   "scripts": {
-    "build": "tsc",
-    "build:alias": "tsc-alias",
+    "build": "tsc && tsc-alias",
     "build:changelog": "npx @discordx/changelog --src src",
     "dev": "ts-node-esm src/main.ts",
     "start": "node build/main.js",
