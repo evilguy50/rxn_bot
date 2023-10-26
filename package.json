@@ -5,8 +5,13 @@
   "license": "MIT",
   "type": "module",
   "main": "build/main.js",
+  "_moduleAliases": {
+    "_root": "",
+    "@": "build"
+  },
   "scripts": {
     "build": "tsc",
+    "build:alias": "tsc-alias",
     "build:changelog": "npx @discordx/changelog --src src",
     "dev": "ts-node-esm src/main.ts",
     "start": "node build/main.js",
@@ -19,15 +24,18 @@
     "@koa/router": "^12.0.0",
     "discord.js": "^14.13.0",
     "discordx": "^11.7.6",
-    "koa": "^2.14.2"
+    "koa": "^2.14.2",
+    "module-alias": "^2.2.3"
   },
   "devDependencies": {
     "@types/koa": "^2.13.8",
     "@types/koa__router": "^12.0.0",
+    "@types/module-alias": "^2.0.3",
     "@types/node": "^20.5.9",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.8",
     "typescript": "5.2.2"
   },
   "engines": {

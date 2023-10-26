@@ -1,12 +1,17 @@
 import { dirname, importx } from "@discordx/importer";
 import { Koa } from "@discordx/koa";
-import type { Interaction, Message } from "discord.js";
+import type { Interaction, Message, Guild } from "discord.js";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
+import { type Config } from "./types/config"
+import { getServer } from "@/utils/get.js"
+import { readFileSync } from "fs";
 
+export const config: Config = JSON.parse(readFileSync("./config.json", "utf8"))
+export var serverId: Guild
 export const bot = new Client({
   // To use only guild command
-  // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
+  botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
 
   // Discord intents
   intents: [
@@ -41,7 +46,7 @@ bot.once("ready", async () => {
   //  await bot.clearApplicationCommands(
   //    ...bot.guilds.cache.map((g) => g.id)
   //  );
-
+  serverId = getServer(bot, config.id)
   console.log("Bot started");
 });
 
@@ -64,12 +69,12 @@ async function run() {
   );
 
   // Let's start the bot
-  if (!process.env.BOT_TOKEN) {
+  if (!config.token) {
     throw Error("Could not find BOT_TOKEN in your environment");
   }
 
   // Log in with your bot token
-  await bot.login(process.env.BOT_TOKEN);
+  await bot.login(config.token);
 
   // ************* rest api section: start **********
 
